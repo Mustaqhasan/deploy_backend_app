@@ -16,6 +16,20 @@ noteRouter.get("/",async(req,res)=>{
     }
 })
 
+noteRouter.get("/:id", async (req, res) => {
+  const token = req.headers.authorization.split(" ")[1];
+  const decoded = jwt.verify(token, "masai");
+  const { id } = req.params;
+  try {
+    if (decoded) {
+      const note = await NoteModel.findById({ _id: id });
+      res.send(note);
+    }
+  } catch (err) {
+    res.send({ msg: err.message });
+  }
+});
+
 noteRouter.post("/add",async(req,res)=>{
     try{
         const note=new NoteModel(req.body)
