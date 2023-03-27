@@ -1,17 +1,26 @@
 const mongoose=require("mongoose")
 
-//user schema
 const userSchema=mongoose.Schema({
-    email: String,
-    pass: String,
-    location: String,
-    age: Number
-},{
-    versionKey:false
+    name:String,
+    email:String,
+    gender:String,
+    password:String,
+    age:Number,
+    city:String,
+    is_married:Boolean
 })
 
-const UserModel=mongoose.model("user",userSchema)
+const UserModal=mongoose.model("user",userSchema)
 
 module.exports={
-    UserModel
+    UserModal
 }
+
+
+// name ==> String
+// email ==> String
+// gender ==> String
+// password ==> String
+// age ==> Number
+// city ==> String
+// is_married ==> boolean
